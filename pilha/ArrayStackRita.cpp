@@ -1,4 +1,4 @@
-// Copyright [2019] <COLOQUE SEU NOME AQUI...>
+// Copyright [2019] <Rita Louro Barbosa>
 #ifndef STRUCTURES_ARRAY_STACK_H
 #define STRUCTURES_ARRAY_STACK_H
 
@@ -6,7 +6,6 @@
 #include <stdexcept>  // C++ exceptions
 
 /// a implementação das funções é no código .h ou em outro? está certo como fiz?
-///### por que não implementa as constantes de pilh vazia e cheia -1 e -2 vistas na video aula?
 ///# por que no template não informa o tipo de dado retornado pela funçõ?
 /// ### como aplicar os testes unitários do moodle?
 namespace structures {
@@ -77,7 +76,7 @@ void structures::ArrayStack<T>::push(const T& data) {
     } else {
         top_ = top_ +1;
         contents[top_] = data;
-        return top_;
+        // return top_;#### ?????
     }
 }
 
@@ -86,7 +85,7 @@ void structures::ArrayStack<T>::push(const T& data) {
 // ###aqui em c++ não tem self não?
 template<typename T>
 T structures::ArrayStack<T>::pop() {
-    if empty() {
+    if (empty()) {
         throw std::out_of_range("pilha vazia");
     } else {
         top_ = top_ -1;
@@ -96,47 +95,46 @@ T structures::ArrayStack<T>::pop() {
 
 // metodo retorna o topo
 // ###pq tá retornando T& e não um inteiro?
-// ### não precisa excluir o dado do topo?
 template<typename T>
 T& structures::ArrayStack<T>::top() {
-    if empty(){
+    if (empty()) {
         throw std::out_of_range("pilha vazia");
-    }else{
+    } else {
         return contents[top_];
     }
 }
 
 template<typename T>
 void structures::ArrayStack<T>::clear() {
-    // COLOQUE SEU CODIGO AQUI...
-    // código internet:
+
     top_ = -1;
 }
 
 template<typename T>
 std::size_t structures::ArrayStack<T>::size() {
-    return size_t
+    return top_ + 1;
 }
 
 template<typename T>
 std::size_t structures::ArrayStack<T>::max_size() {
-    return max_size_
+    return max_size_;
 }
 
 template<typename T>
 bool structures::ArrayStack<T>::empty() {
-    if (top_ == -1){
-        return True
-    }else {
-        return False
+    if (top_ == -1) {
+        return true;
+    } else {
+        return false;
     }
 }
 
 template<typename T>
 bool structures::ArrayStack<T>::full() {
-    if top_ == (max_size_-1){
-        return True
-    }else{
-        return False
+    if (top_ == (static_cast<int>(max_size_)-1)) {
+        return true;
+    } else {
+        return false;
     }
 }
+
