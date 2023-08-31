@@ -106,7 +106,6 @@ T& structures::ArrayStack<T>::top() {
 
 template<typename T>
 void structures::ArrayStack<T>::clear() {
-
     top_ = -1;
 }
 
